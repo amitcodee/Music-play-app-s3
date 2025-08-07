@@ -1,372 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Tune Flow - Stream Music</title>
-    <meta name="description" content="Tune Flow is your ultimate destination to stream, discover, and download amazing music across genres.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tune Flow- Stream Music</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-
-            body {
-                font-family: 'Segoe UI', sans-serif;
-                background: linear-gradient(135deg, #4e54c8, #8f94fb);
-                color: #fff;
-                line-height: 1.6;
-                overflow-x: hidden;
-            }
-
-            /* Navigation Bar */
-            .navbar {
-                background: rgba(0, 0, 0, 0.85);
-                padding: 16px 32px;
-                position: fixed;
-                top: 0;
-                width: 100%;
-                z-index: 999;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            }
-
-            .nav-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .nav-logo h1 {
-                font-size: 28px;
-                color: #fff;
-            }
-
-            .nav-logo .tagline {
-                font-size: 13px;
-                color: #ccc;
-            }
-
-            .nav-menu {
-                list-style: none;
-                display: flex;
-                gap: 24px;
-            }
-
-            .nav-menu li a {
-                color: #fff;
-                text-decoration: none;
-                font-weight: bold;
-                transition: color 0.3s ease;
-            }
-
-            .nav-menu li a:hover {
-                color: #ffd369;
-            }
-
-            /* Hero Section */
-            .hero {
-                padding: 128px 32px 64px;
-                text-align: center;
-                background: linear-gradient(135deg, #1d2b64, #f8cdda);
-            }
-
-            .hero h1 {
-                font-size: 48px;
-                margin-bottom: 16px;
-                color: #fff;
-            }
-
-            .hero p {
-                font-size: 21px;
-                color: #f0f0f0;
-            }
-
-            /* Categories */
-            .categories {
-                text-align: center;
-                margin: 48px 16px;
-            }
-
-            .categories h2 {
-                font-size: 32px;
-                margin-bottom: 16px;
-            }
-
-            .category-filters {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 16px;
-            }
-
-            .filter-btn {
-                padding: 10px 20px;
-                border: none;
-                border-radius: 30px;
-                background: #ffd369;
-                color: #000;
-                font-weight: bold;
-                cursor: pointer;
-                transition: background 0.3s ease;
-            }
-
-            .filter-btn:hover,
-            .filter-btn.active {
-                background: #ff9f1c;
-            }
-
-            /* Songs Section */
-            .songs-section {
-                padding: 32px;
-                text-align: center;
-            }
-
-            .songs-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 24px;
-            }
-
-            /* No Songs Fallback */
-            .no-songs {
-                grid-column: 1/-1;
-                padding: 64px 20px;
-                background-color: rgba(255, 255, 255, 0.05);
-                border-radius: 12px;
-            }
-
-            .no-songs i {
-                color: #ffd369;
-                margin-bottom: 16px;
-            }
-
-            .no-songs h3 {
-                margin-bottom: 10px;
-                font-size: 22px;
-            }
-
-            .no-songs p {
-                color: #ccc;
-                margin-bottom: 16px;
-            }
-
-            .admin-button {
-                padding: 10px 20px;
-                background: #5c6bc0;
-                color: #fff;
-                border: none;
-                border-radius: 6px;
-                text-decoration: none;
-                font-weight: bold;
-                transition: background 0.3s ease;
-            }
-
-            .admin-button:hover {
-                background: #3f51b5;
-            }
-
-            /* Audio Player */
-            .audio-player {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: #000;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 12px 16px;
-                border-top: 2px solid #444;
-                z-index: 999;
-                color: #fff;
-                font-size: 14px;
-                flex-wrap: wrap;
-            }
-
-            .player-info {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                min-width: 200px;
-            }
-
-            .player-info img {
-                width: 50px;
-                height: 50px;
-                border-radius: 4px;
-                object-fit: cover;
-                background: #333;
-            }
-
-            .player-info div {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .player-info h4 {
-                margin: 0;
-                font-size: 16px;
-                font-weight: bold;
-                color: #ffd369;
-            }
-
-            .player-info p {
-                margin: 2px 0 0;
-                font-size: 13px;
-                color: #aaa;
-            }
-
-            .player-controls {
-                margin: 0 16px;
-            }
-
-            .player-controls button {
-                background: none;
-                border: none;
-                color: #ffd369;
-                font-size: 24px;
-                cursor: pointer;
-            }
-
-            .player-progress {
-                display: flex;
-                align-items: center;
-                flex: 1;
-                gap: 8px;
-            }
-
-            .player-progress input[type="range"] {
-                width: 100%;
-                height: 4px;
-                cursor: pointer;
-                accent-color: #ff4ecd;
-            }
-
-            /* About Section */
-            .about {
-                padding: 48px 16px;
-                text-align: center;
-                background-color: #2d2d44;
-            }
-
-            .about h2 {
-                font-size: 32px;
-                margin-bottom: 16px;
-            }
-
-            .about p {
-                max-width: 600px;
-                margin: auto;
-                color: #ddd;
-            }
-
-            /* Footer */
-            .footer {
-                background: #111;
-                text-align: center;
-                padding: 16px;
-                font-size: 14px;
-                color: #aaa;
-            }
-
-            .social-links {
-                margin-top: 8px;
-            }
-
-            .social-links a {
-                margin: 0 8px;
-                color: #ffd369;
-                font-size: 20px;
-                transition: transform 0.3s;
-            }
-
-            .social-links a:hover {
-                transform: scale(1.2);
-            }
-
-    </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h1><i class="fas fa-music"></i> Tune Flow</h1>
-                <p class="tagline">Where the music flows, your emotion grows.</p>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </div>
-    </nav>
+    <header>
+    <h1><i class="bi bi-apple-music"></i> Tune Flow</h1>
+    <p>Where the music flows, your emotion grows.</p>
+  </header>
 
-    <!-- Hero Section -->
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#tracks">Tracks</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
     <section class="hero" id="home">
         <h1>Discover Amazing Music</h1>
         <p>Stream and download your favorite songs</p>
     </section>
 
-    <!-- Categories -->
     <section class="categories">
         <h2>Categories</h2>
         <div class="category-filters">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Pop</button>
-            <button class="filter-btn">Rock</button>
-            <button class="filter-btn">Jazz</button>
-            <button class="filter-btn">Classical</button>
-            <button class="filter-btn">Hip Hop</button>
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="pop">Pop</button>
+            <button class="filter-btn" data-category="rock">Rock</button>
+            <button class="filter-btn" data-category="jazz">Jazz</button>
+            <button class="filter-btn" data-category="classical">Classical</button>
+            <button class="filter-btn" data-category="hip-hop">Hip Hop</button>
         </div>
     </section>
 
-    <!-- Songs Grid -->
     <section class="songs-section">
-        <div id="songs-grid" class="songs-grid">
-            <!-- Example fallback when no songs are present -->
-            <div class="no-songs">
-                <i class="fas fa-music fa-3x"></i>
-                <h3>No songs available</h3>
-                <p>Upload some songs through the admin panel to get started!</p>
-                <a href="admin.html" class="admin-button">Go to Admin Panel</a>
-            </div>
-        </div>
+        <div id="songs-grid" class="songs-grid"></div>
     </section>
 
-    <!-- Audio Player -->
     <div class="audio-player" id="audioPlayer">
         <div class="player-info">
-            <img id="playerImage" src="https://via.placeholder.com/50" alt="Current song artwork">
+            <img id="playerImage" src="https://via.placeholder.com/50" alt="Song">
             <div>
                 <h4 id="playerTitle">Select a song</h4>
                 <p id="playerArtist">Artist</p>
             </div>
         </div>
         <div class="player-controls">
-            <button id="playPauseBtn" aria-label="Play or Pause"><i class="fas fa-play"></i></button>
+            <button id="playPauseBtn"><i class="fas fa-play"></i></button>
         </div>
         <div class="player-progress">
             <span id="currentTime">0:00</span>
-            <input type="range" id="progressBar" min="0" max="100" value="0" aria-label="Playback progress">
+            <input type="range" id="progressBar" min="0" max="100" value="0">
             <span id="duration">0:00</span>
         </div>
+        <audio id="audioElement"></audio>
     </div>
 
-    <!-- About -->
     <section id="about" class="about">
         <h2>About Tune Flow</h2>
-        <p>
-            Tune Flow is your ultimate music streaming platform with high-quality audio and seamless downloads.
-            Explore various genres, manage playlists, and enjoy music on the go.
-        </p>
+        <p>Your ultimate music streaming platform with high-quality audio and easy downloads.</p>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2023 Tune Flow. All rights reserved.</p>
         <div class="social-links">
@@ -374,8 +72,8 @@
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
-    </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
+ 
