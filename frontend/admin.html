@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - MusicHub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2><i class="fas fa-shield-alt"></i> Admin Access</h2>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="👤 Username" aria-label="Username" required>
+                <input type="password" id="password" placeholder="🔒 Password" aria-label="Password" required>
+                <button type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
+                <small><i class="fas fa-info-circle"></i> Default: admin / admin123</small>
+            </form>
+        </div>
+    </div>
+
+    <div id="adminDashboard" class="admin-dashboard" style="display: none;">
+        <header class="admin-header">
+            <h1><i class="fas fa-music"></i> MusicHub Admin</h1>
+            <button id="logoutBtn">Logout</button>
+        </header>
+
+        <nav class="admin-nav">
+            <button class="nav-btn active" data-section="stats">
+                <i class="fas fa-chart-bar"></i> Dashboard
+            </button>
+            <button class="nav-btn" data-section="songs">
+                <i class="fas fa-list"></i> Manage Songs
+            </button>
+            <button class="nav-btn" data-section="upload">
+                <i class="fas fa-upload"></i> Upload Song
+            </button>
+        </nav>
+
+        <main class="admin-main">
+            <section id="stats-section" class="admin-section active">
+                <h2><i class="fas fa-analytics"></i> Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-music"></i>
+                        <div>
+                            <h3 id="totalSongs">0</h3>
+                            <p>Total Songs</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-play-circle"></i>
+                        <div>
+                            <h3 id="totalPlays">0</h3>
+                            <p>Total Plays</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-download"></i>
+                        <div>
+                            <h3 id="totalDownloads">0</h3>
+                            <p>Downloads</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="songs-section" class="admin-section">
+                <h2><i class="fas fa-list-music"></i> Manage Songs</h2>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-image"></i> Image</th>
+                            <th><i class="fas fa-music"></i> Name</th>
+                            <th><i class="fas fa-user"></i> Artist</th>
+                            <th><i class="fas fa-tags"></i> Category</th>
+                            <th><i class="fas fa-cogs"></i> Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="songsTableBody"></tbody>
+                </table>
+            </section>
+
+            <section id="upload-section" class="admin-section">
+                <h2><i class="fas fa-cloud-upload-alt"></i> Upload New Song</h2>
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <input type="text" id="songName" placeholder="🎵 Song Name" aria-label="Song Name" required>
+                    <input type="text" id="artistName" placeholder="🎤 Artist Name" aria-label="Artist Name" required>
+                    <select id="category" aria-label="Category" required>
+                        <option value="">📂 Select Category</option>
+                        <option value="pop">🎭 Pop</option>
+                        <option value="rock">🎸 Rock</option>
+                        <option value="jazz">🎷 Jazz</option>
+                        <option value="classical">🎼 Classical</option>
+                        <option value="hip-hop">🎤 Hip Hop</option>
+                    </select>
+                    <label for="songImage"><i class="fas fa-image"></i> Song Image</label>
+                    <input type="file" id="songImage" accept="image/*" aria-label="Song Image" required>
+                    <label for="songFile"><i class="fas fa-music"></i> Song File (MP3)</label>
+                    <input type="file" id="songFile" accept="audio/mp3" aria-label="Song File" required>
+                    <button type="submit"><i class="fas fa-upload"></i> Upload Song</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

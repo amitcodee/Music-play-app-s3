@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicHub - Stream Music</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo"><i class="fas fa-music"></i> MusicHub</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="admin.html" class="admin-link">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>Discover Amazing Music</h1>
+        <p>Stream and download your favorite songs</p>
+    </section>
+
+    <section class="categories">
+        <h2>Categories</h2>
+        <div class="category-filters">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="pop">Pop</button>
+            <button class="filter-btn" data-category="rock">Rock</button>
+            <button class="filter-btn" data-category="jazz">Jazz</button>
+            <button class="filter-btn" data-category="classical">Classical</button>
+            <button class="filter-btn" data-category="hip-hop">Hip Hop</button>
+        </div>
+    </section>
+
+    <section class="songs-section">
+        <div id="songs-grid" class="songs-grid"></div>
+    </section>
+
+    <div class="audio-player" id="audioPlayer">
+        <div class="player-info">
+            <img id="playerImage" src="https://via.placeholder.com/50" alt="Song">
+            <div>
+                <h4 id="playerTitle">Select a song</h4>
+                <p id="playerArtist">Artist</p>
+            </div>
+        </div>
+        <div class="player-controls">
+            <button id="playPauseBtn"><i class="fas fa-play"></i></button>
+        </div>
+        <div class="player-progress">
+            <span id="currentTime">0:00</span>
+            <input type="range" id="progressBar" min="0" max="100" value="0">
+            <span id="duration">0:00</span>
+        </div>
+        <audio id="audioElement"></audio>
+    </div>
+
+    <section id="about" class="about">
+        <h2>About MusicHub</h2>
+        <p>Your ultimate music streaming platform with high-quality audio and easy downloads.</p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
