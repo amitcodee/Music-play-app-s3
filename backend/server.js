@@ -19,13 +19,6 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Create uploads directory if it doesn't exist
-const uploadsDir = path.join(__dirname, 'uploads');
-if (!fs.existsSync(uploadsDir)) {
-    fs.mkdirSync(uploadsDir, { recursive: true });
-    fs.mkdirSync(path.join(uploadsDir, 'audio'), { recursive: true });
-    fs.mkdirSync(path.join(uploadsDir, 'images'), { recursive: true });
-}
-
 const s3Client = new S3Client({
     region: process.env.AWS_REGION,
     credentials: {
@@ -33,6 +26,12 @@ const s3Client = new S3Client({
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     },
 });
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+    fs.mkdirSync(path.join(uploadsDir, 'audio'), { recursive: true });
+    fs.mkdirSync(path.join(uploadsDir, 'images'), { recursive: true });
+}
 
 const BUCKET_NAME = process.env.S3_BUCKET_NAME;
 

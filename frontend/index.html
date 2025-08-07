@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tune Flow- Stream Music</title>
+    <title>Tune Flow - Stream Music</title>
+    <meta name="description" content="Tune Flow is your ultimate destination to stream, discover, and download amazing music across genres.">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                </h1><i class="fas fa-music"></i> Tune Flow</h1>
-                <p>Where the music flows, your emotion grows.</p>
+                <h1><i class="fas fa-music"></i> Tune Flow</h1>
+                <p class="tagline">Where the music flows, your emotion grows.</p>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
@@ -22,11 +25,13 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <h1>Discover Amazing Music</h1>
         <p>Stream and download your favorite songs</p>
     </section>
 
+    <!-- Category Filters -->
     <section class="categories">
         <h2>Categories</h2>
         <div class="category-filters">
@@ -39,42 +44,50 @@
         </div>
     </section>
 
+    <!-- Songs Grid Section -->
     <section class="songs-section">
-        <div id="songs-grid" class="songs-grid"></div>
+        <div id="songs-grid" class="songs-grid">
+            <!-- Songs dynamically injected here -->
+        </div>
     </section>
 
+    <!-- Audio Player -->
     <div class="audio-player" id="audioPlayer">
         <div class="player-info">
-            <img id="playerImage" src="https://via.placeholder.com/50" alt="Song">
+            <img id="playerImage" src="https://via.placeholder.com/50" alt="Current song artwork">
             <div>
                 <h4 id="playerTitle">Select a song</h4>
                 <p id="playerArtist">Artist</p>
             </div>
         </div>
         <div class="player-controls">
-            <button id="playPauseBtn"><i class="fas fa-play"></i></button>
+            <button id="playPauseBtn" aria-label="Play or Pause"><i class="fas fa-play"></i></button>
         </div>
         <div class="player-progress">
             <span id="currentTime">0:00</span>
-            <input type="range" id="progressBar" min="0" max="100" value="0">
+            <input type="range" id="progressBar" min="0" max="100" value="0" aria-label="Playback progress">
             <span id="duration">0:00</span>
         </div>
         <audio id="audioElement"></audio>
     </div>
 
+    <!-- About Section -->
     <section id="about" class="about">
         <h2>About Tune Flow</h2>
-        <p>Your ultimate music streaming platform with high-quality audio and easy downloads.</p>
+        <p>Tune Flow is your ultimate music streaming platform with high-quality audio and seamless downloads. Explore various genres, manage playlists, and enjoy music on the go.</p>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2023 Tune Flow. All rights reserved.</p>
         <div class="social-links">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
+    </footer>
 
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
