@@ -916,3 +916,9 @@ body {
 .admin-main::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
 }
+footer{
+    background: #2c3e50;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
