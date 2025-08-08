@@ -1006,3 +1006,20 @@
                 padding: 2rem;
             }
         }
+        .section.contact {
+      background: #5d7695;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .section.contact h2 {
+      font-size: 32px;
+      color: #21e6c1;
+      margin-bottom: 15px;
+    }
+
+    .section.contact p {
+      font-size: 18px;
+      color: #e0e0e0;
+      margin: 8px 0;
+    }
