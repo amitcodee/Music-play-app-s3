@@ -8,36 +8,51 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                </h1><i class="fas fa-music"></i> Tune Flow</h1>
-                <p>Where the music flows, your emotion grows.</p>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="admin.html" class="admin-link">Admin</a></li>
-            </ul>
-        </div>
+    <header class="head">
+        <h1><i class="bi bi-apple-music"></i> Tune Flow</h1>
+        <p>Where the music flows, your emotion grows</p>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#tracks">Tracks</a>
+        <a href="#contact">Contact</a>
+        <a href="admin.html">Admin</a>
     </nav>
-
-
-    <section class="hero" id="home">
-        <h1>Discover Amazing Music</h1>
-        <p>Stream and download your favorite songs</p>
+    
+    <section id="about" class="section about">
+        <h2>About us</h2>
+        <p>At Tune Flow, we believe music is more than sound—it's emotion, expression, and connection. We bring you the finest tracks that move hearts and uplift spirits, creating a space where melodies truly matter.</p>
     </section>
 
-    <section class="categories">
-        <h2>Categories</h2>
-        <div class="category-filters">
-            <button class="filter-btn active" data-category="all">All</button>
-            <button class="filter-btn" data-category="pop">Pop</button>
-            <button class="filter-btn" data-category="rock">Rock</button>
-            <button class="filter-btn" data-category="jazz">Jazz</button>
-            <button class="filter-btn" data-category="classical">Classical</button>
-            <button class="filter-btn" data-category="hip-hop">Hip Hop</button>
-        </div>
+    
+    <section id="tracks" class="music">
+        <h2>Featured Tracks</h2>
+            <div class="tracks">
+        <a href="popular.html" class="track1">
+        <img src="https://target.scene7.com/is/image/Target/GUEST_e93edebe-1531-4836-92c4-a66963bef2cb?wid=800&hei=800&qlt=80&fmt=pjpeg" alt="Popular Picks" />
+            <div>
+            <h4>🎧 Popular Picks</h4>
+            <p>Our Popular Picks bring you the latest chart-toppers and fan favorites that are making waves across playlists.</p>
+            </div>
+         </a>
+
+        <a href="lo-fi.html" class="track2">
+            <img src="https://i.pinimg.com/1200x/2d/cd/0b/2dcd0b5810e5354d82fe4c30328dce63.jpg" alt="Lo-Fi / Chill Vibes" />
+            <div>
+                <h4>🎶 Lo-Fi / Chill Vibes</h4>
+                <p>Unwind with our Lo-Fi & Chill Vibes collection — soft beats and mellow melodies to calm your mind.</p>
+            </div>
+        </a>
+
+        <a href="upbeat.html" class="track3">
+            <img src="https://i.pinimg.com/736x/47/ea/bc/47eabc757b073f99a0af1eefbc4e1966.jpg" alt="Upbeat / Party" />
+            <div>
+                <h4>🔥 Upbeat / Party</h4>
+                <p>Get the party started with energetic tracks for celebrations, workouts, and turning any moment into a vibe.</p>
+            </div>
+        </a>
+            </div>
     </section>
 
     <section class="songs-section">
@@ -63,10 +78,6 @@
         <audio id="audioElement"></audio>
     </div>
 
-    <section id="about" class="about">
-        <h2>About Tune Flow</h2>
-        <p>Your ultimate music streaming platform with high-quality audio and easy downloads.</p>
-    </section>
 
     <footer class="footer">
         <p>&copy; 2023 Tune Flow. All rights reserved.</p>
