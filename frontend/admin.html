@@ -4,8 +4,287 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - MusicHub</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+            /* ===== Global Reset ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== Body ===== */
+        body.admin-body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #1b1b1b;
+            color: #f0f0f0;
+            min-height: 100vh;
+        }
+
+        /* ===== Modal ===== */
+        .modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(20, 20, 20, 0.85);
+        }
+
+        .modal-content {
+            background: #252525;
+            padding: 28px;
+            border-radius: 10px;
+            width: 340px;
+            text-align: center;
+            box-shadow: 0px 0px 15px rgba(0, 128, 255, 0.15);
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 18px;
+            color: #7ab4ff;
+            font-weight: 500;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 11px;
+            margin-bottom: 14px;
+            background: #2d2d2d;
+            border: 1px solid #3a3a3a;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .modal-content button {
+            width: 100%;
+            padding: 11px;
+            background: #4a90e2;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.25s;
+        }
+
+        .modal-content button:hover {
+            background: #3b78c2;
+        }
+
+        .modal-content small {
+            display: block;
+            margin-top: 6px;
+            color: #999;
+        }
+
+        /* ===== Dashboard Layout ===== */
+        .admin-dashboard {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            align-items: center;
+        }
+
+        /* ===== Header ===== */
+        .admin-header {
+            background: #232323;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .admin-header h1 {
+            font-size: 18px;
+            color: #7ab4ff;
+            font-weight: 500;
+        }
+
+        .admin-header button {
+            padding: 7px 13px;
+            background: #4a90e2;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background 0.25s;
+        }
+
+        .admin-header button:hover {
+            background: #3b78c2;
+        }
+
+        /* ===== Navigation ===== */
+        .admin-nav {
+            display: flex;
+            background: #2b2b2b;
+            padding: 8px;
+            gap: 8px;
+            border-bottom: 1px solid #333;
+        }
+
+        .nav-btn {
+            flex: 1;
+            background: #353535;
+            border: none;
+            padding: 9px;
+            border-radius: 6px;
+            color: #e0e0e0;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.25s;
+        }
+
+        .nav-btn:hover {
+            background: #404040;
+        }
+
+        .nav-btn.active {
+            background: #4a90e2;
+            color: #fff;
+        }
+
+        /* ===== Main Content ===== */
+        .admin-main {
+            flex: 1;
+            padding: 18px;
+            overflow-y: auto;
+        }
+
+        .admin-section {
+            display: none;
+        }
+
+        .admin-section.active {
+            display: block;
+        }
+
+        /* ===== Stats Section ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .stat-card {
+            background: #252525;
+            padding: 18px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border: 1px solid #333;
+        }
+
+        .stat-card i {
+            font-size: 26px;
+            color: #7ab4ff;
+        }
+
+        .stat-card h3 {
+            font-size: 22px;
+            margin-bottom: 3px;
+            font-weight: 500;
+        }
+
+        .stat-card p {
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        /* ===== Table ===== */
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 18px;
+            background: #252525;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .admin-table th,
+        .admin-table td {
+            padding: 11px;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        .admin-table thead {
+            background: #2f2f2f;
+            color: #ccc;
+        }
+
+        .admin-table tbody tr:nth-child(even) {
+            background: #2b2b2b;
+        }
+
+        .admin-table tbody tr:hover {
+            background: #333;
+        }
+
+        /* ===== Upload Form ===== */
+        #uploadForm {
+            margin-top: 18px;
+            background: #252525;
+            padding: 18px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        #uploadForm input,
+        #uploadForm select,
+        #uploadForm button {
+            width: 100%;
+            padding: 9px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            border: 1px solid #3a3a3a;
+        }
+
+        #uploadForm input,
+        #uploadForm select {
+            background: #2d2d2d;
+            color: #fff;
+        }
+
+        #uploadForm button {
+            background: #4a90e2;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.25s;
+        }
+
+        #uploadForm button:hover {
+            background: #3b78c2;
+        }
+
+        #uploadForm label {
+            display: block;
+            margin-bottom: 4px;
+            color: #bbb;
+            font-size: 13px;
+        }
+
+        /* ===== Animations ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
 </head>
 <body class="admin-body">
     <div id="loginModal" class="modal">
@@ -22,7 +301,7 @@
 
     <div id="adminDashboard" class="admin-dashboard" style="display: none;">
         <header class="admin-header">
-            <h1><i class="fas fa-music"></i> MusicHub Admin</h1>
+            <h1><i class="fas fa-music"></i> Tune Flow Admin</h1>
             <button id="logoutBtn">Logout</button>
         </header>
 
