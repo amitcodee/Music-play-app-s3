@@ -268,9 +268,6 @@
         padding: 8px 16px;
         border-radius: 20px;
     }
-
-
-
         .action-btn {
             flex: 1;
             background: transparent;
@@ -485,7 +482,7 @@
             display: flex;
             flex-direction: column;
             height: 100vh;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(62, 55, 55, 0.95);
             margin: 20px;
             border-radius: 20px;
             overflow: hidden;
@@ -494,7 +491,7 @@
         }
 
         .admin-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background:linear-gradient(135deg, #6f00ff, #b300b3);
             color: white;
             padding: 1.5rem 2rem;
             display: flex;
@@ -507,6 +504,7 @@
             font-size: 1.8rem;
             font-weight: 600;
             margin: 0;
+            text-align: center;
         }
 
         .admin-header h1 i {
@@ -793,53 +791,7 @@
             box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .admin-dashboard {
-                margin: 10px;
-                border-radius: 15px;
-            }
-            
-            .admin-main {
-                padding: 1.5rem;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .stat-card {
-                padding: 1.5rem;
-            }
-            
-            .admin-nav {
-                flex-wrap: wrap;
-            }
-            
-            .nav-btn {
-                padding: 15px 20px;
-                font-size: 0.9rem;
-            }
-            
-            .admin-table {
-                font-size: 0.9rem;
-            }
-            
-            .admin-table th, .admin-table td {
-                padding: 1rem 0.5rem;
-            }
-            
-            #uploadForm {
-                padding: 2rem;
-            }
-            
-            .modal-content {
-                min-width: 90%;
-                margin: 0 20px;
-                padding: 2rem;
-            }
-        }
+       
 
         /* Loading Animation */
         .loading {
@@ -921,11 +873,11 @@
         }
 
         .admin-table tbody tr:nth-child(even) {
-            background: #fafbfc;
+            background: #182c40;
         }
 
         .admin-table tbody tr:hover {
-            background: #f0f4ff !important;
+            background: #101d40 !important;
             transform: scale(1.02);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
@@ -998,9 +950,59 @@
         .admin-main::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
         }
+
+
+
         footer{
             background: #2c3e50;
             color: white;
             padding: 2rem 0;
             text-align: center;
+        }
+         /* Responsive Design */
+        @media (max-width: 768px) {
+            .admin-dashboard {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .admin-main {
+                padding: 1.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .stat-card {
+                padding: 1.5rem;
+            }
+            
+            .admin-nav {
+                flex-wrap: wrap;
+            }
+            
+            .nav-btn {
+                padding: 15px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .admin-table {
+                font-size: 0.9rem;
+            }
+            
+            .admin-table th, .admin-table td {
+                padding: 1rem 0.5rem;
+            }
+            
+            #uploadForm {
+                padding: 2rem;
+            }
+            
+            .modal-content {
+                min-width: 90%;
+                margin: 0 20px;
+                padding: 2rem;
+            }
         }
