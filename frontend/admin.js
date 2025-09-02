@@ -7,6 +7,13 @@ const uploadForm = document.getElementById('uploadForm');
 document.addEventListener('DOMContentLoaded', function() {
     checkAuth();
     setupEventListeners();
+    // Category filter event
+    const categoryFilter = document.getElementById('categoryFilter');
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', function() {
+            loadSongs(this.value);
+        });
+    }
 });
 
 function setupEventListeners() {
@@ -65,14 +72,19 @@ function showDashboard() {
     loginModal.style.display = 'none';
     adminDashboard.style.display = 'flex';
     loadStats();
-    loadSongs();
+    // Load all songs by default
+    loadSongs('all');
 }
 
 function showSection(section) {
     document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
     document.getElementById(`${section}-section`).classList.add('active');
-    
-    if (section === 'songs') loadSongs();
+    if (section === 'songs') {
+        // Use selected filter if available
+        const categoryFilter = document.getElementById('categoryFilter');
+        const selected = categoryFilter ? categoryFilter.value : 'all';
+        loadSongs(selected);
+    }
     if (section === 'stats') loadStats();
 }
 
@@ -89,11 +101,10 @@ async function loadStats() {
     }
 }
 
-async function loadSongs() {
+async function loadSongs(category = 'all') {
     try {
-        const response = await fetch('/api/songs');
+        const response = await fetch(`/api/songs?category=${category}`);
         const songs = await response.json();
-        
         const tbody = document.getElementById('songsTableBody');
         tbody.innerHTML = songs.map(song => `
             <tr>

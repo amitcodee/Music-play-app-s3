@@ -346,8 +346,15 @@
             </section>
 
             <section id="songs-section" class="admin-section">
-                <h2><i class="fas fa-list-music"></i> Manage Songs</h2>
-                <table class="admin-table">
+                    <h2><i class="fas fa-list-music"></i> Manage Songs</h2>
+                    <label for="categoryFilter" style="margin-right:10px;"><i class="fas fa-filter"></i> Filter by Category:</label>
+                    <select id="categoryFilter" style="margin-bottom:15px;">
+                        <option value="all">All Categories</option>
+                        <option value="popular">Popular</option>
+                        <option value="lo-fi">lofi</option>
+                        <option value="upbeat/party">upbeat/party</option>
+                    </select>
+                    <table class="admin-table">
                     <thead>
                         <tr>
                             <th><i class="fas fa-image"></i> Image</th>
